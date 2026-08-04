@@ -13,6 +13,19 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response("Hello World!");
+		const { pathname } = new URL(request.url);
+
+		if (request.method === "GET" && pathname === "/") {
+			return new Response("Hello World!");
+		}
+
+		if (request.method === "GET" && pathname === "/health") {
+			return Response.json({
+				status: "ok",
+				service: "portfolio-rag-assistant",
+			});
+		}
+
+		return Response.json({ error: "Not found" }, { status: 404 });
 	},
 } satisfies ExportedHandler<Env>;
