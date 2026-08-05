@@ -23,6 +23,9 @@ _.seed
 
 lib-cov
 
+# Generated knowledge artifacts
+generated/
+
 # Coverage directory used by tools like istanbul
 
 coverage

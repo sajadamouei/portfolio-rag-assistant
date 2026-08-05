@@ -7,13 +7,19 @@
     "dev": "wrangler dev",
     "start": "wrangler dev",
     "test": "vitest",
+    "ingest": "tsx scripts/ingest.ts",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.12.4",
     "@types/node": "^26.1.2",
+    "tsx": "^4.23.7",
     "typescript": "^5.5.2",
     "vitest": "~3.2.0",
     "wrangler": "^4.118.0"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "zod": "^4.4.3"
   }
 }
