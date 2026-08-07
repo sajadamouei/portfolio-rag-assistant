@@ -1,0 +1,156 @@
+[
+  {
+    "id": "ret-001",
+    "question": "What is the dry eye classification research about?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Overview"]
+  },
+  {
+    "id": "ret-002",
+    "question": "How many patients were included in the dry eye machine learning experiments?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Dataset"]
+  },
+  {
+    "id": "ret-003",
+    "question": "How imbalanced was the dry eye dataset?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Dataset", "Challenge"]
+  },
+  {
+    "id": "ret-004",
+    "question": "What was Sajad's personal contribution to the dry eye research?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["My contribution"]
+  },
+  {
+    "id": "ret-005",
+    "question": "What was the hardest technical problem in the dry eye project?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Hard parts", "Challenge"]
+  },
+  {
+    "id": "ret-006",
+    "question": "Which machine learning models were compared?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Methods and solution"]
+  },
+  {
+    "id": "ret-007",
+    "question": "How were the machine learning models validated?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Experimental design and validation"]
+  },
+  {
+    "id": "ret-008",
+    "question": "Why was nested cross-validation used?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": [
+      "Experimental design and validation",
+      "Hard parts"
+    ]
+  },
+  {
+    "id": "ret-009",
+    "question": "Which model performed best on the merged metabolomics dataset?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Results"]
+  },
+  {
+    "id": "ret-010",
+    "question": "What AUC did logistic regression achieve?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Results"]
+  },
+  {
+    "id": "ret-011",
+    "question": "Why did logistic regression work better than some more complex models?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": [
+      "Results",
+      "Trade-offs",
+      "Lessons learned"
+    ]
+  },
+  {
+    "id": "ret-012",
+    "question": "Can the dry eye model be used directly in a hospital as a diagnostic system?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": [
+      "Limitations",
+      "Practical significance"
+    ]
+  },
+  {
+    "id": "ret-013",
+    "question": "What were the main limitations of the research?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Limitations"]
+  },
+  {
+    "id": "ret-014",
+    "question": "What did Sajad learn from this research?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Lessons learned"]
+  },
+  {
+    "id": "ret-015",
+    "question": "Which technologies were used in the dry eye project?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Technologies"]
+  },
+  {
+    "id": "ret-016",
+    "question": "What are possible future improvements to the dry eye research?",
+    "language": "en",
+    "answerable": true,
+    "expectedSourceIds": ["dry-eye-classification"],
+    "expectedSections": ["Future improvements"]
+  },
+  {
+    "id": "ret-017",
+    "question": "What salary does Sajad expect?",
+    "language": "en",
+    "answerable": false,
+    "expectedSourceIds": [],
+    "expectedSections": []
+  },
+  {
+    "id": "ret-018",
+    "question": "What is Sajad's favorite programming language?",
+    "language": "en",
+    "answerable": false,
+    "expectedSourceIds": [],
+    "expectedSections": []
+  }
+]
