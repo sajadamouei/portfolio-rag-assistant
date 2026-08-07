@@ -13,6 +13,17 @@
 	"upload_source_maps": true,
 	"compatibility_flags": [
 		"nodejs_compat"
+	],
+	"ai": {
+		"binding": "AI",
+		"remote": true
+	},
+	"vectorize": [
+		{
+			"binding": "VECTORIZE",
+			"index_name": "portfolio-knowledge",
+			"remote": true
+		}
 	]
 	/**
 	 * Smart Placement
