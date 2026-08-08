@@ -8,6 +8,7 @@
     "start": "wrangler dev",
     "test": "vitest",
     "ingest": "tsx scripts/ingest.ts",
+    "build:vectors": "tsx scripts/build-vector-records.ts",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {
