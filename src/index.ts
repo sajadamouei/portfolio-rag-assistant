@@ -11,9 +11,12 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { retrieveKnowledge } from "./rag/retrieve";
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		const { pathname } = new URL(request.url);
+		const url = new URL(request.url);
+		const { pathname } = url;
 
 		if (request.method === "GET" && pathname === "/") {
 			return new Response("Hello World!");
@@ -23,6 +26,24 @@ export default {
 			return Response.json({
 				status: "ok",
 				service: "portfolio-rag-assistant",
+			});
+		}
+
+		if (request.method === "GET" && pathname === "/retrieve-test") {
+			const query = url.searchParams.get("q")?.trim();
+
+			if (!query) {
+				return Response.json(
+					{ error: "Missing query parameter: q" },
+					{ status: 400 },
+				);
+			}
+
+			const matches = await retrieveKnowledge(env, query, 3);
+
+			return Response.json({
+				query,
+				matches,
 			});
 		}
 
