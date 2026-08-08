@@ -152,5 +152,101 @@
     "answerable": false,
     "expectedSourceIds": [],
     "expectedSections": []
-  }
+  },
+  {
+  "id": "ret-019",
+  "question": "What is AgoCourse and what kind of training is it designed to create?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Overview"]
+},
+{
+  "id": "ret-020",
+  "question": "What was Sajad's personal role in building AgoCourse?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["My contribution"]
+},
+{
+  "id": "ret-021",
+  "question": "How does AgoCourse turn a user prompt into an interactive training course?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Solution", "Architecture"]
+},
+{
+  "id": "ret-022",
+  "question": "How is branching course logic represented inside AgoCourse?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Architecture"]
+},
+{
+  "id": "ret-023",
+  "question": "Which technologies are used to build the AgoCourse platform?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Technologies"]
+},
+{
+  "id": "ret-024",
+  "question": "What were the hardest problems when developing the AI course builder?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Hard parts", "Challenge"]
+},
+{
+  "id": "ret-025",
+  "question": "How is AgoCourse currently being tested with users?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Validation"]
+},
+{
+  "id": "ret-026",
+  "question": "What has the AgoCourse project achieved so far?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Results"]
+},
+{
+  "id": "ret-027",
+  "question": "What are the current limitations of AgoCourse?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Limitations"]
+},
+{
+  "id": "ret-028",
+  "question": "Why does AgoCourse use AI to assist course creators instead of fully automating course creation?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Trade-offs"]
+},
+{
+  "id": "ret-029",
+  "question": "What features does AgoCourse provide besides AI course generation?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Other components"]
+},
+{
+  "id": "ret-030",
+  "question": "What did Sajad learn from developing AgoCourse and leading the project?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Lessons learned"]
+}
 ]

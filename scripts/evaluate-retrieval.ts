@@ -37,6 +37,10 @@ async function main() {
 	const questions = JSON.parse(raw) as EvaluationQuestion[];
 
 	let evaluated = 0;
+
+	let sourceHitAt1 = 0;
+	let sourceHitAt3 = 0;
+
 	let hitAt1 = 0;
 	let hitAt3 = 0;
 
@@ -61,23 +65,45 @@ async function main() {
 
 		const result = (await response.json()) as RetrievalResponse;
 
-		const retrievedSections = result.matches.matches
-			.map((match) => match.metadata?.section)
-			.filter((section): section is string => Boolean(section));
+		const retrievedMatches = result.matches.matches.map((match) => ({
+			sourceId: match.metadata?.sourceId,
+			section: match.metadata?.section,
+		}));
 
-		const firstSection = retrievedSections[0];
+		const isExpectedSource = (
+			match: { sourceId?: string },
+		) =>
+			match.sourceId !== undefined &&
+			item.expectedSourceIds.includes(match.sourceId);
+
+		const isSourceHitAt1 =
+			retrievedMatches[0] !== undefined &&
+			isExpectedSource(retrievedMatches[0]);
+
+		const isSourceHitAt3 = retrievedMatches
+			.slice(0, 3)
+			.some(isExpectedSource);
+
+		const isExpectedMatch = (
+			match: { sourceId?: string; section?: string },
+		) =>
+			match.sourceId !== undefined &&
+			match.section !== undefined &&
+			item.expectedSourceIds.includes(match.sourceId) &&
+			item.expectedSections.includes(match.section);
 
 		const isHitAt1 =
-			firstSection !== undefined &&
-			item.expectedSections.includes(firstSection);
+			retrievedMatches[0] !== undefined &&
+			isExpectedMatch(retrievedMatches[0]);
 
-		const isHitAt3 = retrievedSections
+		const isHitAt3 = retrievedMatches
 			.slice(0, 3)
-			.some((section) =>
-				item.expectedSections.includes(section),
-			);
+			.some(isExpectedMatch);
 
 		evaluated++;
+
+		if (isSourceHitAt1) sourceHitAt1++;
+		if (isSourceHitAt3) sourceHitAt3++;
 
 		if (isHitAt1) hitAt1++;
 		if (isHitAt3) hitAt3++;
@@ -87,11 +113,22 @@ async function main() {
 			`Expected: ${item.expectedSections.join(", ")}`,
 		);
 		console.log(
-			`Retrieved: ${retrievedSections.join(" → ")}`,
+			`Retrieved: ${retrievedMatches
+				.map(
+					(match) =>
+						`${match.sourceId ?? "unknown"} / ${match.section ?? "unknown"}`,
+				)
+				.join(" → ")}`,
 		);
 		console.log(
 			`Hit@1: ${isHitAt1 ? "YES" : "NO"} | Hit@3: ${
 				isHitAt3 ? "YES" : "NO"
+			}`,
+		);
+
+		console.log(
+			`Source@1: ${isSourceHitAt1 ? "YES" : "NO"} | Source@3: ${
+				isSourceHitAt3 ? "YES" : "NO"
 			}`,
 		);
 	}
@@ -100,6 +137,20 @@ async function main() {
 	console.log("Retrieval evaluation summary");
 	console.log("------------------------------");
 	console.log(`Answerable questions: ${evaluated}`);
+
+	console.log(
+		`Source@1: ${sourceHitAt1}/${evaluated} (${(
+			(sourceHitAt1 / evaluated) *
+			100
+		).toFixed(1)}%)`,
+	);
+
+	console.log(
+		`Source@3: ${sourceHitAt3}/${evaluated} (${(
+			(sourceHitAt3 / evaluated) *
+			100
+		).toFixed(1)}%)`,
+	);
 
 	console.log(
 		`Hit@1: ${hitAt1}/${evaluated} (${(
