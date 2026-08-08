@@ -9,6 +9,7 @@
     "test": "vitest",
     "ingest": "tsx scripts/ingest.ts",
     "build:vectors": "tsx scripts/build-vector-records.ts",
+    "eval:retrieval": "tsx scripts/evaluate-retrieval.ts",
     "cf-typegen": "wrangler types"
   },
   "devDependencies": {

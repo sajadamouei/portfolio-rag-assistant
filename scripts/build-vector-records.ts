@@ -42,6 +42,11 @@ async function main() {
 
 	console.log(`Loaded ${chunks.length} knowledge chunks.`);
 
+	const embeddingTexts = chunks.map(
+		(chunk) =>
+			`Title: ${chunk.title}\nSection: ${chunk.section}\n\n${chunk.text}`,
+	);
+
 	const response = await fetch(
 		`https://api.cloudflare.com/client/v4/accounts/${accountId}/ai/run/${MODEL}`,
 		{
@@ -51,7 +56,7 @@ async function main() {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				text: chunks.map((chunk) => chunk.text),
+				text: embeddingTexts,
 			}),
 		},
 	);
