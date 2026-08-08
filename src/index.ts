@@ -12,6 +12,7 @@
  */
 
 import { retrieveKnowledge } from "./rag/retrieve";
+import { generateTestAnswer } from "./rag/generate";
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
@@ -26,6 +27,27 @@ export default {
 			return Response.json({
 				status: "ok",
 				service: "portfolio-rag-assistant",
+			});
+		}
+
+		if (url.pathname === "/generate-test") {
+			const question = url.searchParams.get("q")?.trim();
+
+			if (!question) {
+				return Response.json(
+					{ error: "Missing q query parameter." },
+					{ status: 400 },
+				);
+			}
+
+			const answer = await generateTestAnswer(
+				env.AI,
+				question,
+			);
+
+			return Response.json({
+				question,
+				answer,
 			});
 		}
 
