@@ -248,5 +248,113 @@
   "answerable": true,
   "expectedSourceIds": ["ai-course-builder"],
   "expectedSections": ["Lessons learned"]
+},
+{
+  "id": "ret-031",
+  "question": "What was Sajad's role in AgoCourse, and what were the hardest problems he worked on?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["My contribution", "Hard parts", "Challenge"],
+  "requiredEvidence": [
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["My contribution"]
+    },
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["Hard parts", "Challenge"]
+    }
+  ]
+},
+{
+  "id": "ret-032",
+  "question": "How is AgoCourse structured technically, and which technologies are used to build it?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["ai-course-builder"],
+  "expectedSections": ["Architecture", "Technologies"],
+  "requiredEvidence": [
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["Architecture"]
+    },
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["Technologies"]
+    }
+  ]
+},
+{
+  "id": "ret-033",
+  "question": "How was the dry eye machine learning study validated, and which model performed best?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["dry-eye-classification"],
+  "expectedSections": ["Experimental design and validation", "Results"],
+  "requiredEvidence": [
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Experimental design and validation"]
+    },
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Results"]
+    }
+  ]
+},
+{
+  "id": "ret-034",
+  "question": "What made the dry eye project technically difficult, and what limitations remained after the study?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["dry-eye-classification"],
+  "expectedSections": ["Hard parts", "Challenge", "Limitations"],
+  "requiredEvidence": [
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Hard parts", "Challenge"]
+    },
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Limitations"]
+    }
+  ]
+},
+{
+  "id": "ret-035",
+  "question": "What did Sajad learn from both the dry eye research and the AgoCourse project?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["dry-eye-classification", "ai-course-builder"],
+  "expectedSections": ["Lessons learned"],
+  "requiredEvidence": [
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Lessons learned"]
+    },
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["Lessons learned"]
+    }
+  ]
+},
+{
+  "id": "ret-036",
+  "question": "How were the dry eye research and AgoCourse evaluated differently?",
+  "language": "en",
+  "answerable": true,
+  "expectedSourceIds": ["dry-eye-classification", "ai-course-builder"],
+  "expectedSections": ["Experimental design and validation", "Validation"],
+  "requiredEvidence": [
+    {
+      "sourceId": "dry-eye-classification",
+      "sections": ["Experimental design and validation"]
+    },
+    {
+      "sourceId": "ai-course-builder",
+      "sections": ["Validation"]
+    }
+  ]
 }
 ]

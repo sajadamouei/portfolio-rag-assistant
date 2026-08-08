@@ -1,6 +1,11 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+type RequiredEvidence = {
+	sourceId: string;
+	sections: string[];
+};
+
 type EvaluationQuestion = {
 	id: string;
 	question: string;
@@ -8,6 +13,7 @@ type EvaluationQuestion = {
 	answerable: boolean;
 	expectedSourceIds: string[];
 	expectedSections: string[];
+	requiredEvidence?: RequiredEvidence[];
 };
 
 type RetrievalResponse = {
@@ -44,6 +50,12 @@ async function main() {
 	let hitAt1 = 0;
 	let hitAt3 = 0;
 
+	let multiEvidenceEvaluated = 0;
+	let fullCoverageAt3 = 0;
+
+	let evidenceTargetsFound = 0;
+	let totalEvidenceTargets = 0;
+
 	for (const item of questions) {
 		if (!item.answerable) {
 			console.log(
@@ -69,6 +81,54 @@ async function main() {
 			sourceId: match.metadata?.sourceId,
 			section: match.metadata?.section,
 		}));
+
+		if (item.requiredEvidence?.length) {
+			const top3 = retrievedMatches.slice(0, 3);
+
+			const coveredEvidence = item.requiredEvidence.filter((required) =>
+				top3.some(
+					(match) =>
+						match.sourceId === required.sourceId &&
+						match.section !== undefined &&
+						required.sections.includes(match.section),
+				),
+			);
+
+			const coveredCount = coveredEvidence.length;
+			const requiredCount = item.requiredEvidence.length;
+
+			const isFullCoverageAt3 =
+				coveredCount === requiredCount;
+
+			multiEvidenceEvaluated++;
+			evidenceTargetsFound += coveredCount;
+			totalEvidenceTargets += requiredCount;
+
+			if (isFullCoverageAt3) {
+				fullCoverageAt3++;
+			}
+
+			console.log(`\n${item.id}: ${item.question}`);
+
+			console.log(
+				`Retrieved: ${retrievedMatches
+					.map(
+						(match) =>
+							`${match.sourceId ?? "unknown"} / ${match.section ?? "unknown"}`,
+					)
+					.join(" → ")}`,
+			);
+
+			console.log(
+				`Evidence coverage@3: ${coveredCount}/${requiredCount}`,
+			);
+
+			console.log(
+				`Full coverage@3: ${isFullCoverageAt3 ? "YES" : "NO"}`,
+			);
+
+			continue;
+		}
 
 		const isExpectedSource = (
 			match: { sourceId?: string },
@@ -165,6 +225,31 @@ async function main() {
 			100
 		).toFixed(1)}%)`,
 	);
+
+	if (multiEvidenceEvaluated > 0) {
+		console.log("\n------------------------------");
+		console.log("Multi-evidence evaluation");
+		console.log("------------------------------");
+
+		console.log(
+			`Multi-evidence questions: ${multiEvidenceEvaluated}`,
+		);
+
+		console.log(
+			`EvidenceCoverage@3: ${evidenceTargetsFound}/${totalEvidenceTargets} (${(
+				(evidenceTargetsFound / totalEvidenceTargets) *
+				100
+			).toFixed(1)}%)`,
+		);
+
+		console.log(
+			`FullCoverage@3: ${fullCoverageAt3}/${multiEvidenceEvaluated} (${(
+				(fullCoverageAt3 / multiEvidenceEvaluated) *
+				100
+			).toFixed(1)}%)`,
+		);
+	}
+	
 }
 
 main().catch((error) => {
